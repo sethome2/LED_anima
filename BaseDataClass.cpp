@@ -1,17 +1,37 @@
 //2021-5-28 sethome
 
+//LED_anima Lib
 #include "BaseDataClass.h"
+
+//C++ STD Lib
 #include "cmath"
+
 //比较大小的宏定义（色域转换函数用）
 #define THREE_MAX(a, b, c) (a > b ? (a > c ? a : c) : (b > c ? b : c)) //输出三个数中最大数
 #define THREE_MIN(a, b, c) (a > b ? (b > c ? c : b) : (a > c ? c : a)) //输出三个数中最小数
 
 using namespace LED_anima;
 
+
 HSV_info::HSV_info(){};
 HSV_info::HSV_info(RGB_info setVal) { setVal.toHSV(*this); }
 
+/**
+ * @description: HSV_info析构函数
+ */
 HSV_info::~HSV_info(){};
+
+/**
+ * @description: 设定HSV颜色参数
+ * @param: H色相 S饱和度 V明度
+ * @return: N/a 
+ */
+void HSV_info::HSV(float setH, float setS, float setV)
+{
+  H = setH;
+  S = setS;
+  V = setV;
+}
 
 //@brief 色域颜色转换
 //@param 接受转换结果变量
@@ -68,6 +88,11 @@ RGB_info::RGB_info() {}
 RGB_info::RGB_info(HSV_info setVal) { setVal.toRGB(*this); }
 
 RGB_info::~RGB_info() {}
+
+uint32_t RGB_info::RGB()
+{
+  return (static_cast<uint32_t>(R) << 16) + (static_cast<uint32_t>(G) << 8) + (static_cast<uint32_t>(B));
+}
 
 void RGB_info::toHSV(HSV_info &HSV)
 {

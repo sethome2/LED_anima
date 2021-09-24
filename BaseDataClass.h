@@ -13,7 +13,7 @@ namespace LED_anima
   class RGB_info;
   class HSV_info;
 
-  //单个灯珠HSV信息
+  //单个HSV信息
   class HSV_info
   {
   public:
@@ -26,13 +26,8 @@ namespace LED_anima
 
     ~HSV_info();
 
-    void HSV(float setH, float setS, float setV)
-    {
-      H = setH;
-      S = setS;
-      V = setV;
-    }
-
+    void HSV(float setH, float setS, float setV);
+    
     void toRGB(RGB_info &RGB);
 
     inline HSV_info operator+(const HSV_info other_color)
@@ -68,10 +63,8 @@ namespace LED_anima
 
     ~RGB_info();
 
-    uint32_t RGB()
-    {
-      return (static_cast<uint32_t>(R) << 16) + (static_cast<uint32_t>(G) << 8) + (static_cast<uint32_t>(B));
-    }
+    uint32_t RGB();
+ 
     void RGB(uint32_t RGB)
     {
       B = static_cast<uint32_t>(RGB);
