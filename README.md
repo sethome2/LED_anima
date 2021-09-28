@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-09-25 01:26:25
- * @LastEditTime: 2021-09-25 01:32:45
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \LED_anima\README.md
--->
 # LED_anima
 This lib allow you config different light strip anima by json or code.
 ![LED_animaLogo](https://github.com/sethome2/LED_anima/blob/main/LED_animaLogo.jpg)
@@ -36,10 +28,13 @@ Please see the smallest example:
 ___
 # ColorAnima Info
 1. alwaysON
+It will show the color is you set.
+2. rainbow
 
 ___
 # Version List
+TO DO: Organize the code to more expansive and understandble.
+
 Ver 0.1:
 1. Basic functions ware verify, no menmoy link.
 
-TO DO: Organize the code to more expansive and understandble.
