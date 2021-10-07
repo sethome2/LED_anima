@@ -1,4 +1,10 @@
 /*
+ * @Author: sethome
+ * @Description: Declaration and Define(their shouldn't in this) The ColorAnima Class
+ * @FilePath: \LED_anima\ColorAnimaList.cpp
+ */
+/*
+/*
 MIT License
 
 Copyright (c) 2021 sethome
@@ -33,8 +39,10 @@ SOFTWARE.
 #include "BaseDataClass.h"
 #include "ClassFactory.hpp"
 
+//第三方库支持
 #include "3dr_part./jsonxx/json.hpp"
 
+//C&C++ library
 #include "string"
 #include "cstdlib"
 
@@ -45,20 +53,26 @@ namespace LED_anima
     //动画类反射
     extern Reflection::classFactory animaFactory;
 
-    //基础类,所有的动画函数从此继承
+    /**
+     * @brief 基础类,所有的动画函数从此继承
+     * @param 帧率  defaultFrame
+     * @todo Remove the introduction
+     */
     class colorAnimaBase
     {
     protected:
       int frame = defaultFrame; //动画帧率
 
     public:
-      RGB_info calRGB; //下一帧的数据
+      RGB_info calRGB; //ColorAnima计算得出的颜色
 
       colorAnimaBase() {}
-      ~colorAnimaBase(){};
+      ~colorAnimaBase() {}
 
-      //方便设定帧率时初始化的内容设定
-      virtual void setupFrame(uint16_t setVal) { frame = setVal; }
+      /**
+       * @brief 获取和设定帧率 Get add Set Frame
+       */
+      virtual void setupFrame(uint16_t setVal) { this->frame = setVal; }
       const uint16_t getFrame() { return this->frame; }
 
       //获取下一帧的色彩数据
@@ -92,16 +106,17 @@ namespace LED_anima
       }
     };
 
-    //常量动画
-    //就是一直亮
-    //可设定的参数：无
+    /**
+     * @brief 保持一种颜色 Keep a Color
+     * @extran param 无
+     */
     class alwaysOn : public colorAnimaBase
     {
     public:
       alwaysOn(){};
       ~alwaysOn(){};
 
-      void update(RGB_info nowRGB){calRGB = nowRGB;}
+      void update(RGB_info nowRGB) { calRGB = nowRGB; }
 
       //获取介绍
       std::string introduction(std::string language)
@@ -112,9 +127,11 @@ namespace LED_anima
       }
     };
 
-    //呼吸灯
-    //思路：转为HSV色域后进行操作V明亮值，再转换为RGB色域
-    //可设定的参数：最大/最小明亮度，帧率
+    /**
+     * @brief 呼吸灯  breath Light
+     * @extran param 最大/最小明亮度 Max&Min V 
+     * @work 转为HSV色域后进行操作V明亮值，再转换为RGB色域
+     */
     class breath : public colorAnimaBase
     {
     private:
@@ -129,11 +146,10 @@ namespace LED_anima
       void calGradient() { gradient = (MAX_V - MIN_V) / frame; }
 
     public:
-      //默认5秒一次呼吸
+      //默认5秒一次呼吸 default anima play in 5s
       breath() { setupFrame(defaultFrame * 2.5f); }
       ~breath() {}
 
-      //设定帧率
       void setupFrame(uint16_t setVal)
       {
         frame = setVal;
@@ -230,13 +246,15 @@ namespace LED_anima
       }
     };
 
-    //随机亮
-    //随机利用随机数生成RGB值
-    //可设定的参数：帧率
+    /**
+     * @brief 随机颜色🎲 randomColor🎲
+     * @extra param 
+     * @todo Limit Random Area
+     */
     class random : public colorAnimaBase
     {
     private:
-      uint16_t countFrame = 1;
+      uint16_t countFrame;
 
     public:
       random() { setupFrame(defaultFrame * 2); }
@@ -248,6 +266,7 @@ namespace LED_anima
 
         countFrame = frame; //下次调用时强制刷新
       }
+
       //更新函数
       void update(RGB_info nowRGB)
       {

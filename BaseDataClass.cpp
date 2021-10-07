@@ -157,4 +157,5 @@ void RGB_info::operator=(HSV_info other_color)
 {
   other_color.toRGB(*this);
 }
+
 //end of file

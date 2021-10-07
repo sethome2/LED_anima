@@ -1,6 +1,6 @@
 /*
  * @Author: sethome
- * @Description: In User Settings Edit
+ * @Description: Define The ColorAnima Class Factory
  * @FilePath: \LED_anima\ColorAnimaList.cpp
  */
 /*
@@ -28,7 +28,6 @@ SOFTWARE.
 */
 //2021-5-31 sethome
 
-
 #pragma once
 
 #include "ColorAnimaList.h"
@@ -43,8 +42,10 @@ namespace LED_anima
 {
   namespace ColorAnimaList
   {
+    //反射类
     Reflection::classFactory animaFactory;
 
+    //注册反射函数和对象
     REGISTER(alwaysOn, animaFactory);
     REGISTER(breath, animaFactory);
     REGISTER(random, animaFactory);
