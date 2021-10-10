@@ -1,3 +1,10 @@
+<!--
+ * @Author: sethome
+ * @Date: 2021-09-25 01:26:25
+ * @LastEditTime: 2021-10-10 12:02:11
+ * @Description: README file
+ * @FilePath: \LED_anima\README.md
+-->
 # LED_anima
 This lib allow you config different light strip anima by json or code.
 ![LED_animaLogo](https://github.com/sethome2/LED_anima/blob/main/LED_animaLogo.jpg)
@@ -20,6 +27,13 @@ ColorAnima will provide the frame color.And than, <strong>LEDsAnima</strong> wil
 In some <strong>LEDsAnima</strong>, it maybe modify the frame color.
 
 More infomation in the README and code.
+
+test json：
+'''
+{
+    
+}
+'''
 
 ___
 # How to use?

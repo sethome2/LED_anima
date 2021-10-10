@@ -1,4 +1,11 @@
 /*
+ * @Author: sethome
+ * @Date: 2021-09-25 01:26:25
+ * @LastEditTime: 2021-10-10 11:58:57
+ * @Description: basic setting
+ * @FilePath: \LED_anima\setting.h
+ */
+/*
 MIT License
 
 Copyright (c) 2021 sethome
@@ -33,6 +40,7 @@ SOFTWARE.
 //我推荐根据您的市电频率来设置
 //50HZ 推荐使用50的倍数
 //60HZ 推荐使用60的倍数
+//I recommond you use 50Hz or 60Hz base your area power frequency
 #define defaultFrame 100
 
 #endif

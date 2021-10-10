@@ -1,3 +1,7 @@
+/**
+ * @author sethome
+ * @brief manager LED area
+ */
 /*
 MIT License
 
