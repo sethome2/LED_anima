@@ -1,7 +1,7 @@
 <!--
  * @Author: sethome
  * @Date: 2021-09-25 01:26:25
- * @LastEditTime: 2021-10-10 12:02:11
+ * @LastEditTime: 2021-12-27 17:01:57
  * @Description: README file
  * @FilePath: \LED_anima\README.md
 -->
@@ -29,11 +29,31 @@ In some <strong>LEDsAnima</strong>, it maybe modify the frame color.
 More infomation in the README and code.
 
 test json：
-'''
+```
 {
-    
+    {"LED_id":[0,1,2,3,4,5,6,7,8],
+    "setColor":11162881,
+    "anima":
+     {
+        "color":
+        {
+            "1":
+            {
+                "name":"colorFlow",
+                "argv":{"frame":"50"}
+            }
+        },         
+        "LEDs":
+        {
+            "1":
+            {
+                "name":"flow",
+                "argv":{"frame":"500"}  
+            }
+        }
+     }
 }
-'''
+```
 
 ___
 # How to use?
@@ -45,6 +65,9 @@ ___
 It will show the color is you set.
 2. rainbow
 
+___
+# LEDsAnima Info
+1. flow
 ___
 # Version List
 TO DO: Organize the code to more expansive and understandble.
