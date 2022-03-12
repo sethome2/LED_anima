@@ -1,7 +1,7 @@
 <!--
  * @Author: sethome
  * @Date: 2021-09-25 01:26:25
- * @LastEditTime: 2021-12-27 17:01:57
+ * @LastEditTime: 2021-12-27 17:05:11
  * @Description: README file
  * @FilePath: \LED_anima\README.md
 -->
@@ -31,24 +31,27 @@ More infomation in the README and code.
 test json：
 ```
 {
-    {"LED_id":[0,1,2,3,4,5,6,7,8],
-    "setColor":11162881,
-    "anima":
-     {
-        "color":
+    "area1":
+    {
+        "LED_id":[0,1,2,3,4,5,6,7,8],
+        "setColor":11162881,
+        "anima":
         {
-            "1":
+            "color":
             {
-                "name":"colorFlow",
-                "argv":{"frame":"50"}
+                "1":
+                {
+                    "name":"colorFlow",
+                    "argv":{"frame":"50"}
+                }
             }
-        },         
-        "LEDs":
-        {
-            "1":
+            "LEDs":
             {
-                "name":"flow",
-                "argv":{"frame":"500"}  
+                "1":
+                {
+                    "name":"flow",
+                    "argv":{"frame":"500"}  
+                }
             }
         }
      }
