@@ -1,12 +1,16 @@
 /*
  * @Author: sethome
- * @Description: In User Settings Edit
- * @FilePath: \LED_anima\LED_anima_Utility.h
+ * @Date: 2022-03-13 00:15:12
+ * @LastEditTime: 2022-03-13 00:38:13
+ * @LastEditors: sethome
+ * @Description: ColorAnima: random file
+ * @FilePath: \LED_anima\ColorAnima\random.cpp
  */
+
 /*
 MIT License
 
-Copyright (c) 2021 sethome
+Copyright (c) 2022 sethome
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,33 +30,47 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//2021-5-18 sethome
 
-#define __LED_ANIMA_UTILITY_H__
-#ifdef  __LED_ANIMA_UTILITY_H__
-
-//比较大小的宏定义（色域转换函数用）
-#define THREE_MAX(a, b, c) (a > b ? (a > c ? a : c) : (b > c ? b : c)) //输出三个数中最大数
-#define THREE_MIN(a, b, c) (a > b ? (b > c ? c : b) : (a > c ? c : a)) //输出三个数中最小数
+#include "ColorAnimaList.h"
 
 namespace LED_anima
 {
-  namespace utility
+  namespace ColorAnimaList
   {
-    //释放内存
-    template <typename MemoryPoint>
-    bool freeMemory(MemoryPoint p)
+    /**
+     * @brief 随机颜色🎲 randomColor🎲
+     * @extra param
+     * @todo Limit Random Area
+     */
+    class random : public colorAnimaBase
     {
-      if (p != NULL)
-      {
-        delete p;
-        p = NULL;
-        return true;
-      }
-      return false;
-    }
-  }
-}
-#endif
+    private:
+      uint16_t countFrame;
 
-//end of file
+    public:
+      random() { setupFrame(defaultFrame * 2); }
+      ~random() {}
+
+      void setupFrame(uint16_t setVal)
+      {
+        frame = setVal;
+
+        countFrame = frame; //下次调用时强制刷新
+      }
+
+      //更新函数
+      void update(RGB_info nowRGB)
+      {
+        if (countFrame >= frame)
+        {
+          //预留功能限制随机区域
+          // uint32_t randColor = rand() % 0xFFFFFF;
+          calRGB.RGB(rand() % 0xFFFFFF);
+          countFrame = 1;
+        }
+        countFrame++;
+      }
+    };
+
+  }; // namespace ColorAnimaList
+};   // namespace LED_anima

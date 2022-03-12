@@ -1,7 +1,7 @@
 <!--
  * @Author: sethome
  * @Date: 2021-09-25 01:26:25
- * @LastEditTime: 2021-12-27 17:05:11
+ * @LastEditTime: 2022-03-13 00:59:58
  * @Description: README file
  * @FilePath: \LED_anima\README.md
 -->
@@ -27,6 +27,7 @@ ColorAnima will provide the frame color.And than, <strong>LEDsAnima</strong> wil
 In some <strong>LEDsAnima</strong>, it maybe modify the frame color.
 
 More infomation in the README and code.
+also see the website:LED-anima.sethome.cc
 
 test json：
 ```

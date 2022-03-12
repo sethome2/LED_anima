@@ -28,13 +28,15 @@ SOFTWARE.
 */
 //2021-5-31 sethome
 
-#pragma once
-
 #include "ColorAnimaList.h"
 
-//using namespace LED_anima::ColorAnimaList;
-
-//Reflection::classFactory animaFactory;
+#include "ColorAnima/alwaysOn.cpp"
+#include "ColorAnima/breath.cpp"
+#include "ColorAnima/random.cpp"
+#include "ColorAnima/randomRainbow.cpp"
+#include "ColorAnima/rainbow.cpp"
+#include "ColorAnima/colorFlow.cpp"
+#include "ColorAnima/blink.cpp"
 
 using namespace Reflection;
 

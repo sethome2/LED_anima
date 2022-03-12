@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//2021-5-17 sethome
+// 2021-5-17 sethome
 
 #pragma once
 
@@ -40,8 +40,8 @@ namespace LED_anima
   class HSV_info
   {
   public:
-    float H = 0;        //0-360
-    float S = 0, V = 0; //0-1
+    float H = 0;        // 0-360
+    float S = 0, V = 0; // 0-1
 
   public:
     HSV_info();
@@ -50,7 +50,7 @@ namespace LED_anima
     ~HSV_info();
 
     void HSV(float setH, float setS, float setV);
-    
+
     void toRGB(RGB_info &RGB);
 
     inline HSV_info operator+(const HSV_info other_color)
@@ -78,7 +78,7 @@ namespace LED_anima
   class RGB_info
   {
   public:
-    unsigned char R = 0, G = 0, B = 0;
+    unsigned char A = 255, R = 0, G = 0, B = 0;
 
   public:
     RGB_info();
@@ -87,7 +87,7 @@ namespace LED_anima
     ~RGB_info();
 
     uint32_t RGB();
- 
+
     void RGB(uint32_t RGB)
     {
       B = static_cast<uint32_t>(RGB);
@@ -120,4 +120,4 @@ namespace LED_anima
 }
 
 #endif
-//end of file
+// end of file

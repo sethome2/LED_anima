@@ -35,5 +35,16 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "fileheader.customMade": {
+        "Author": "sethome", // 创建文件的作者
+        "LastEditors": "sethome", // 文件最后编辑者
+        // 插件会自动将光标移动到Description选项中 方便输入 Description字段可以在specialOptions更改
+        "Description": "", // 介绍文件的作用、文件的入参、出参。
+        // custom_string_obkoro1~custom_string_obkoro100都可以输出自定义信息
+        // 可以设置多条自定义信息 设置个性签名、留下QQ、微信联系方式、输入空行等
+        "custom_string_obkoro1": "", 
+        // 版权声明 保留文件所有权利 自动替换年份
+        "custom_string_obkoro1_copyright": "Copyright (c) ${now_year} by sethome, All Rights Reserved. "
+    },
 }

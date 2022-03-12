@@ -1,13 +1,16 @@
 /*
  * @Author: sethome
- * @Description: In User Settings Edit
- * @FilePath: \LED_anima\LED_anima_Utility.hpp
+ * @Date: 2022-03-12 20:39:53
+ * @LastEditTime: 2022-03-13 00:18:30
+ * @LastEditors: Please set LastEditors
+ * @Description: ColorAnima: AlwaysOn file
+ * @FilePath: \LED_anima\ColorAnima\alwaysOn.c
  */
 
 /*
 MIT License
 
-Copyright (c) 2021 sethome
+Copyright (c) 2022 sethome
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,33 +30,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//2021-5-18 sethome
 
-#define __LED_ANIMA_UTILITY_H__
-#ifdef  __LED_ANIMA_UTILITY_H__
-
-//比较大小的宏定义（色域转换函数用）
-#define THREE_MAX(a, b, c) (a > b ? (a > c ? a : c) : (b > c ? b : c)) //输出三个数中最大数
-#define THREE_MIN(a, b, c) (a > b ? (b > c ? c : b) : (a > c ? c : a)) //输出三个数中最小数
+#include "ColorAnimaList.h"
 
 namespace LED_anima
 {
-  namespace utility
+  namespace ColorAnimaList
   {
-    //释放内存
-    template <typename MemoryPoint>
-    bool freeMemory(MemoryPoint p)
+    /**
+     * @brief 保持一种颜色 Keep a Color
+     * @extran param 无
+     */
+    class alwaysOn : public colorAnimaBase
     {
-      if (p != NULL)
-      {
-        delete p;
-        p = NULL;
-        return true;
-      }
-      return false;
-    }
-  }
-}
-#endif
+    public:
+      alwaysOn(){};
+      ~alwaysOn(){};
 
-//end of file
+      void update(RGB_info nowRGB) { calRGB = nowRGB; }
+    };
+
+  }; // namespace ColorAnimaList
+};   // namespace LED_anima

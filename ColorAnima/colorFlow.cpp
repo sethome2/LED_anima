@@ -1,13 +1,16 @@
 /*
  * @Author: sethome
- * @Description: In User Settings Edit
- * @FilePath: \LED_anima\LED_anima_Utility.hpp
+ * @Date: 2022-03-13 00:35:03
+ * @LastEditTime: 2022-03-13 00:39:22
+ * @LastEditors: sethome
+ * @Description: ColorAnima: colorFlow file
+ * @FilePath: \LED_anima\ColorAnima\colorFlow.cpp
  */
 
 /*
 MIT License
 
-Copyright (c) 2021 sethome
+Copyright (c) 2022 sethome
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,33 +30,46 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//2021-5-18 sethome
 
-#define __LED_ANIMA_UTILITY_H__
-#ifdef  __LED_ANIMA_UTILITY_H__
-
-//比较大小的宏定义（色域转换函数用）
-#define THREE_MAX(a, b, c) (a > b ? (a > c ? a : c) : (b > c ? b : c)) //输出三个数中最大数
-#define THREE_MIN(a, b, c) (a > b ? (b > c ? c : b) : (a > c ? c : a)) //输出三个数中最小数
+#include "ColorAnimaList.h"
 
 namespace LED_anima
 {
-  namespace utility
+  namespace ColorAnimaList
   {
-    //释放内存
-    template <typename MemoryPoint>
-    bool freeMemory(MemoryPoint p)
-    {
-      if (p != NULL)
-      {
-        delete p;
-        p = NULL;
-        return true;
-      }
-      return false;
-    }
-  }
-}
-#endif
 
-//end of file
+    //色彩流？
+    //思路：增加HSV的H色相实现
+    //可设定的参数：无
+    class colorFlow : public colorAnimaBase
+    {
+    private:
+      float gradient;
+      HSV_info nowHSV;
+
+    public:
+      colorFlow()
+      {
+        setupFrame(defaultFrame * 5);
+        nowHSV.red();
+      }
+      ~colorFlow() {}
+
+      void setupFrame(uint16_t setVal)
+      {
+        frame = setVal;
+        gradient = 360.0f / frame;
+      }
+
+      void update(RGB_info nowRGB)
+      {
+        nowHSV.H += gradient;
+        if (nowHSV.H >= 360.0f)
+          nowHSV.H = 0;
+
+        nowHSV.toRGB(calRGB);
+      }
+    };
+
+  }; // namespace ColorAnimaList
+};   // namespace LED_anima

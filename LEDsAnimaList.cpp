@@ -30,11 +30,14 @@ SOFTWARE.
 
 #include "LEDsAnimaList.h"
 
+#include "LEDsAnima/flow.cpp" 
+#include "LEDsAnima/randomFlash.cpp"
+#include "LEDsAnima/colorFlow.cpp"
+
 using namespace Reflection;
 
 namespace LED_anima
 {
-  
   namespace LEDsAnimaList
   {
     Reflection::classFactory animaFactory;
@@ -42,5 +45,5 @@ namespace LED_anima
     REGISTER(flow,animaFactory);
     REGISTER(randomFlash,animaFactory);
     REGISTER(colorFlow,animaFactory);
-  }
-}
+  };// namspace LEDsAnimaList
+}; // namspace LED_anima
