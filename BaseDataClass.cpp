@@ -21,12 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//2021-5-28 sethome
+// 2021-5-28 sethome
 
-//LED_anima Lib
+// LED_anima Lib
 #include "BaseDataClass.h"
 
-//C++ STD Lib
+// C++ STD Lib
 #include "cmath"
 
 //比较大小的宏定义（色域转换函数用）
@@ -35,7 +35,7 @@ SOFTWARE.
 
 using namespace LED_anima;
 
-
+// HSV_info class number
 HSV_info::HSV_info(){};
 HSV_info::HSV_info(RGB_info setVal) { setVal.toHSV(*this); }
 
@@ -47,7 +47,7 @@ HSV_info::~HSV_info(){};
 /**
  * @description: 设定HSV颜色参数
  * @param: H色相 S饱和度 V明度
- * @return: N/a 
+ * @return: N/a
  */
 void HSV_info::HSV(float setH, float setS, float setV)
 {
@@ -56,8 +56,11 @@ void HSV_info::HSV(float setH, float setS, float setV)
   V = setV;
 }
 
-//@brief 色域颜色转换
-//@param 接受转换结果变量
+/**
+ * @brief 色域颜色转换
+ *
+ * @param RGB 接受转换结果变量
+ */
 void HSV_info::toRGB(RGB_info &RGB)
 {
   int h_i = floor(this->H / 60.0f);
@@ -102,11 +105,22 @@ void HSV_info::toRGB(RGB_info &RGB)
     return;
   }
 }
-void HSV_info::operator=(RGB_info other_color)
+
+inline HSV_info HSV_info::operator+(const HSV_info other_color)
+{
+  HSV_info mix_color;
+  mix_color.H = (this->H + other_color.H) / 2.0f;
+  mix_color.S = (this->S + other_color.S) / 2.0f;
+  mix_color.V = (this->V + other_color.V) / 2.0f;
+  return mix_color;
+}
+
+inline void HSV_info::operator=(RGB_info other_color)
 {
   other_color.toHSV(*this);
 }
 
+// RGB_info class number
 RGB_info::RGB_info() {}
 RGB_info::RGB_info(HSV_info setVal) { setVal.toRGB(*this); }
 
@@ -117,7 +131,23 @@ uint32_t RGB_info::RGB()
   return (static_cast<uint32_t>(R) << 16) + (static_cast<uint32_t>(G) << 8) + (static_cast<uint32_t>(B));
 }
 
-void RGB_info::toHSV(HSV_info &HSV)
+void RGB_info::RGB(uint32_t RGB)
+{
+  B = static_cast<uint32_t>(RGB);
+  G = static_cast<uint32_t>(RGB) >> 8;
+  R = static_cast<uint32_t>(RGB) >> 16;
+}
+
+inline RGB_info RGB_info::operator+(const RGB_info other_color)
+{
+  RGB_info mix_color;
+  mix_color.R = (static_cast<uint16_t>(this->R) + static_cast<uint16_t>(other_color.R)) / 2;
+  mix_color.G = (static_cast<uint16_t>(this->G) + static_cast<uint16_t>(other_color.G)) / 2;
+  mix_color.B = (static_cast<uint16_t>(this->B) + static_cast<uint16_t>(other_color.B)) / 2;
+  return mix_color;
+}
+
+inline void RGB_info::toHSV(HSV_info &HSV)
 {
   float r = this->R / 255.0f, g = this->G / 255.0f, b = this->B / 255.0f;
 
@@ -158,4 +188,4 @@ void RGB_info::operator=(HSV_info other_color)
   other_color.toRGB(*this);
 }
 
-//end of file
+// end of file

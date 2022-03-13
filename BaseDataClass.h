@@ -53,15 +53,8 @@ namespace LED_anima
 
     void toRGB(RGB_info &RGB);
 
-    inline HSV_info operator+(const HSV_info other_color)
-    {
-      HSV_info mix_color;
-      mix_color.H = (this->H + other_color.H) / 2.0f;
-      mix_color.S = (this->S + other_color.S) / 2.0f;
-      mix_color.V = (this->V + other_color.V) / 2.0f;
-      return mix_color;
-    }
-    void operator=(RGB_info other_color);
+    inline HSV_info operator+(const HSV_info other_color);
+    inline void operator=(RGB_info other_color);
 
     //基本颜色
     void red() { this->HSV(0, 1, 1); }
@@ -87,25 +80,12 @@ namespace LED_anima
     virtual ~RGB_info();
 
     uint32_t RGB();
-
-    void RGB(uint32_t RGB)
-    {
-      B = static_cast<uint32_t>(RGB);
-      G = static_cast<uint32_t>(RGB) >> 8;
-      R = static_cast<uint32_t>(RGB) >> 16;
-    }
-
+    void RGB(uint32_t RGB);
+    
     void toHSV(HSV_info &HSV);
 
-    inline RGB_info operator+(const RGB_info other_color)
-    {
-      RGB_info mix_color;
-      mix_color.R = (static_cast<uint16_t>(this->R) + static_cast<uint16_t>(other_color.R)) / 2;
-      mix_color.G = (static_cast<uint16_t>(this->G) + static_cast<uint16_t>(other_color.G)) / 2;
-      mix_color.B = (static_cast<uint16_t>(this->B) + static_cast<uint16_t>(other_color.B)) / 2;
-      return mix_color;
-    }
-    void operator=(HSV_info other_color);
+    inline RGB_info operator+(const RGB_info other_color);
+    inline void operator=(HSV_info other_color);
 
     //基本颜色
     void red() { this->RGB(0xFF0000); }
