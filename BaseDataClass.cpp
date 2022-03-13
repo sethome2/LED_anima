@@ -183,7 +183,7 @@ inline void RGB_info::toHSV(HSV_info &HSV)
   }
 }
 
-void RGB_info::operator=(HSV_info other_color)
+inline void RGB_info::operator=(HSV_info other_color)
 {
   other_color.toRGB(*this);
 }
