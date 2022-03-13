@@ -47,7 +47,7 @@ namespace LED_anima
     HSV_info();
     HSV_info(RGB_info setVal);
 
-    ~HSV_info();
+    virtual ~HSV_info();
 
     void HSV(float setH, float setS, float setV);
 
@@ -84,7 +84,7 @@ namespace LED_anima
     RGB_info();
     RGB_info(HSV_info setVal);
 
-    ~RGB_info();
+    virtual ~RGB_info();
 
     uint32_t RGB();
 

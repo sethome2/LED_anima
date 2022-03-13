@@ -67,7 +67,7 @@ namespace LED_anima
       RGB_info calRGB; //ColorAnima计算得出的颜色
 
       colorAnimaBase() {}
-      ~colorAnimaBase() {}
+      virtual ~colorAnimaBase() {}
 
       /**
        * @brief 获取和设定帧率 Get add Set Frame

@@ -1,11 +1,12 @@
 /*
  * @Author: sethome
  * @Date: 2021-09-25 01:26:25
- * @LastEditTime: 2022-03-13 01:31:47
+ * @LastEditTime: 2022-03-13 17:02:54
  * @LastEditors: sethome
  * @Description: LEDs group Anima List
  * @FilePath: \LED_anima\LEDsAnimaList.h
  */
+
 /*
 MIT License
 
@@ -29,6 +30,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 //2021-6-13 sethome
 
 #pragma once
@@ -64,7 +66,7 @@ namespace LED_anima
 
     public:
       LEDsAnimaBase() {}
-      ~LEDsAnimaBase() {} //不要主动释放leds里的LED序列
+      virtual ~LEDsAnimaBase() {} //不要主动释放leds里的LED序列
 
       //初始化
       virtual void initLEDs(std::vector<RGB_info *> *setLEDs) { LEDs = setLEDs; }
