@@ -81,12 +81,15 @@ namespace LED_anima
 
     uint32_t RGB();
     void RGB(uint32_t RGB);
-    
+
     void toHSV(HSV_info &HSV);
 
     inline RGB_info operator+(const RGB_info other_color);
-    inline void operator=(HSV_info other_color);
-
+    inline void operator=(HSV_info other_color)
+    {
+      other_color.toRGB(*this);
+    }
+    
     //基本颜色
     void red() { this->RGB(0xFF0000); }
     void green() { this->RGB(0x00FF00); }
@@ -97,7 +100,7 @@ namespace LED_anima
     void orange() { this->RGB(0xFFA500); }
     void blank() { this->RGB(0x000000); }
   };
-}
+} // namespace LED_anima
 
 #endif
 // end of file
