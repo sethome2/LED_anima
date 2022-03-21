@@ -68,7 +68,7 @@ ___
 1. alwaysON
 It will show the color is you set.
 2. rainbow
-
+Seven colors of the rainbow.
 ___
 # LEDsAnima Info
 1. flow
